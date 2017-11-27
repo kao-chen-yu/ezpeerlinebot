@@ -3,6 +3,8 @@
 var linebot = require('linebot');
 var express = require('express');
 const uuid = require('uuid/v1');
+var apiai = require('apiai');
+var app1 = apiai('df450cef4ea7467a8543a9c0ee587e2e');
 
 var bot = linebot({
 	channelId : '1547763729',
@@ -19,7 +21,7 @@ bot.on('message', function(event) {
 	});
 	
 	request.on('response',function(response){
-		    event.reply(response).then(function(data) {
+		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
       console.log(response);
     }).catch(function(error) {
