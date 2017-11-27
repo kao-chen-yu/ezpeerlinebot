@@ -16,7 +16,7 @@ bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
     var msg = event.message.text;
-	var request = app1.textRequest( query,{
+	var request = app1.textRequest( msg,{
 			sessionId: uuid()
 	});
 	
