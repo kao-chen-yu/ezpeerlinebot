@@ -2,6 +2,7 @@
 
 var linebot = require('linebot');
 var express = require('express');
+const uuid = require('uuid/v1');
 
 var bot = linebot({
 	channelId : '1547763729',
@@ -13,13 +14,25 @@ bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
     var msg = event.message.text;
-    event.reply(msg).then(function(data) {
+	var request = app1.textRequest( query,{
+			sessionId: uuid()
+	});
+	
+	request.on('response',function(response){
+		    event.reply(response).then(function(data) {
       // success 
-      console.log(msg);
+      console.log(response);
     }).catch(function(error) {
       // error 
       console.log('error');
     });
+	});
+	
+	request.on('error',function(error){
+		console.log(error);
+	});
+	request.end();
+	
   }
 });
 
