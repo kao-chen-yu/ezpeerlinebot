@@ -38,20 +38,6 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			console.log('response singer :' +response.result.parameters.singer);
-			var options2 = {
-			sessionId: uuid(),
-			contexts:[
-				{
-					"name": "find_singer-followup",
-					"parameters": {
-					"singer": "五月天",
-					"singer.original": "五月天"
-					}
-        
-				}
-					]
-				};
-			console.log('options :' + options2.contexts[0].parameters.singer);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			var t=test(response);}
@@ -88,7 +74,13 @@ var test = function(response){
 	var request = app1.textRequest(event.message.text,options);
 	
 	request.on('response',function(response){
-		console.log(response);
+		event.reply(response.result.fulfillment.speech).then(function(data) {
+      // success 
+			console.log(response);
+			}).catch(function(error) {
+      // error 
+			console.log('error');
+			});
 	});
 	
 	request.on('error',function(error){
