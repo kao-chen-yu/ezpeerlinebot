@@ -34,7 +34,15 @@ bot.on('message', function(event) {
 						console.log('contexts :' + context.parameters.singer);
 						var request = app1.textRequest( msg1,{
 							sessionId: uuid(),
-							contexts: context
+							contexts: [
+								{
+									name: context.name,
+								parameters: {
+									'singer': context.parameters.singer,
+									 'singer.original' : context.parameters.singer.original
+											}
+								}
+								]
 						});
 						console.log('request' + request.msg1.seesionId);
 					}
