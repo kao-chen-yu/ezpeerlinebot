@@ -50,10 +50,10 @@ bot.on('message', function(event) {
 						console.log('id'+options.sessionId);
 						console.log('name'+options.contexts[0].name);
 						console.log('para'+options.contexts[0].parameters.singer);
-						var request = app1.textRequest( msg1,options);
+						var request1 = app1.textRequest(msg1,options);
 						
 					}
-					request.on('response',function(response){
+					request1.on('response',function(response){
 						event.reply(response.result.fulfillment.speech).then(function(data) {
 							console.log(response);
 						});
