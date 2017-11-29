@@ -38,7 +38,7 @@ bot.on('message', function(event) {
 							{
 							name: 'context_number_one',
 							parameters: {
-							'par': 'parameter value 1'
+							par: 'parameter value 1'
 										}
 							}
 							]
