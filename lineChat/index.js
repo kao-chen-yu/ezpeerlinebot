@@ -25,7 +25,7 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			context=response.result.contexts[0];
-			console.log('contexts :' + context);
+			console.log('contexts :' + context.parameters.singer);
 			}).catch(function(error) {
       // error 
 			console.log('error');
