@@ -26,6 +26,8 @@ bot.on('message', function(event) {
 			console.log(response);
 			context=response.result.contexts[0];
 			console.log('contexts :' + context.parameters.singer);
+			if(response.result.metadata.intentName='find_singer')
+				console.log('find_singer!');
 			}).catch(function(error) {
       // error 
 			console.log('error');
