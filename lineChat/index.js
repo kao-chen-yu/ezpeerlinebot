@@ -23,8 +23,8 @@ bot.on('message', function(event) {
       {
         "name": "find_singer-followup",
         "parameters": {
-          "singer": "五月天",
-          "singer.original": "五月天"
+          "singer": "",
+          "singer.original": ""
         }
         
       }
@@ -37,7 +37,9 @@ bot.on('message', function(event) {
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			
+			console.log('response singer :' +response.result.parameters.singer);
+			options.contexts[0].parameters.singer=response.result.parameters.singer;
+			options.contexts[0].parameters.singer.original=response.result.parameters.singer;
 			}).catch(function(error) {
       // error 
 			console.log('error');
