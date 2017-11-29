@@ -41,6 +41,10 @@ bot.on('message', function(event) {
 			options.contexts[0].parameters.singer="五月天";
 			options.contexts[0].parameters.singer.original="五月天";
 			console.log('options :' + options.contexts[0].parameters.singer);
+			bot.on('message', function(event){
+				console.log('bot 2 start !' + event.message.text);
+				
+			});
 			}).catch(function(error) {
       // error 
 			console.log('error');
