@@ -44,7 +44,7 @@ bot.on('message', function(event) {
 							]
 						};
 						console.log('id'+options.sessionId);
-						console.log('para'+options.parameters.par);
+						console.log('para'+options.contecxts.parameters.par);
 						var request = app1.textRequest( msg1,{
 							sessionId: uuid(),
 							contexts: [
