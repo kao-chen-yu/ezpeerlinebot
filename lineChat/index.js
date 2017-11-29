@@ -40,6 +40,7 @@ bot.on('message', function(event) {
 			console.log('response singer :' +response.result.parameters.singer);
 			options.contexts[0].parameters.singer="五月天";
 			options.contexts[0].parameters.singer.original="五月天";
+			console.log('options :' + options.contexts[0].parameters.singer);
 			}).catch(function(error) {
       // error 
 			console.log('error');
