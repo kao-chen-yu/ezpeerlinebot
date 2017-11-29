@@ -36,7 +36,7 @@ bot.on('message', function(event) {
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
-			console.log('bot 1 response '+response);
+			console.log(response);
 			console.log('response singer :' +response.result.parameters.singer);
 			var options2 = {
 			sessionId: uuid(),
@@ -52,15 +52,8 @@ bot.on('message', function(event) {
 					]
 				};
 			console.log('options :' + options2.contexts[0].parameters.singer);
-			bot.on('message', function(event){
-				console.log('bot 2 start !' + event.message.text);
-				console.log('bot 2 options'+options2.contexts[0].parameters.singer);
-				request = app1.textRequest(event.message.text,options2);
-				request.on('response',function(response){
-				console.log('bot 2 response');
-				console.log(response);
-				});
-			});
+			if(response.result.metadata.intentName='find_singer')
+				var t=test(response);
 			}).catch(function(error) {
       // error 
 			console.log('error');
@@ -72,7 +65,10 @@ bot.on('message', function(event) {
 	request.end();
   }
 });
-
+var test = function(response){
+	
+	console.log('test function');
+}
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
