@@ -18,7 +18,7 @@ bot.on('message', function(event) {
     var msg = event.message.text;
 	var sessionid= uuid();
 	var request = app1.textRequest( msg,{
-			sessionId: sessionid
+			sessionId: uuid()
 	});
 	var context='';
 	request.on('response',function(response){
@@ -30,11 +30,12 @@ bot.on('message', function(event) {
 			if(response.result.metadata.intentName='find_singer'){
 			console.log('find_singer!' + sessionid);
 				bot.on('message', function(event) {
+					console.log('bot2 start !');
 					if (event.message.type = 'text') {
 						var msg1 = event.message.text;
 	
 						var options = {
-							sessionId: '321',
+							sessionId: uuid(),
 							contexts: [{
 									name: context.name,
 									parameters: {
@@ -46,18 +47,7 @@ bot.on('message', function(event) {
 						console.log('id'+options.sessionId);
 						console.log('name'+options.contexts[0].name);
 						console.log('para'+options.contexts[0].parameters.singer);
-						var request = app1.textRequest( msg1,{
-							sessionId: sessionid,
-							contexts: [
-								{
-									name: context.name,
-								parameters: {
-									'singer': context.parameters.singer,
-									 'singer.original' : context.parameters.singer.original
-											}
-								}
-								]
-						});
+						var request = app1.textRequest( msg1,options);
 						
 					}
 					request.on('response',function(response){
