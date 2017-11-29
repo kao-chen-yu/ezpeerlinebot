@@ -25,6 +25,7 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			context=response.result.contexts[0];
+			console.log('contexts :' + context);
 			}).catch(function(error) {
       // error 
 			console.log('error');
