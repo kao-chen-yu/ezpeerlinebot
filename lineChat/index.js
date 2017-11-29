@@ -19,15 +19,12 @@ bot.on('message', function(event) {
 	var request = app1.textRequest( msg,{
 			sessionId: uuid()
 	});
-	
+	var context='';
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			if(response.result.parameters.singer!="")
-			console.log('singer not null')
-			else if (response.result.contexts[0].parameters.singer!="")
-			console.log('context !! ' )
+			context=response.result.contexts[0];
 			}).catch(function(error) {
       // error 
 			console.log('error');
@@ -38,7 +35,7 @@ bot.on('message', function(event) {
 		console.log(error);
 	});
 	request.end();
-	
+	console.log('context :' + context);
   }
 });
 
