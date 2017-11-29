@@ -25,12 +25,13 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			context=response.result.contexts[0];
-			console.log('contexts :' + context.parameters.singer);
+			
 			if(response.result.metadata.intentName='find_singer'){
 			console.log('find_singer!');
 				bot.on('message', function(event) {
 					if (event.message.type = 'text') {
 						var msg1 = event.message.text;
+						console.log('contexts :' + context.parameters.singer);
 						var request = app1.textRequest( msg1,{
 							sessionId: uuid(),
 							contexts: context
@@ -53,7 +54,6 @@ bot.on('message', function(event) {
 		console.log(error);
 	});
 	request.end();
-	console.log('context :' + context);
   }
 });
 
