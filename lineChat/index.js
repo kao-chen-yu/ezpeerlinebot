@@ -36,7 +36,9 @@ bot.on('message', function(event) {
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-
+			bot.on('message',function(event){
+			console.log(event.message.text;);
+			});
 			}).catch(function(error) {
       // error 
 			console.log('error');
