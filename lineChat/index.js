@@ -17,49 +17,26 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
 	var sessionid= uuid();
-	var request = app1.textRequest( msg,{
-			sessionId: uuid()
-	});
+	var options = {
+		sessionId: uuid(),
+		contexts:[
+      {
+        "name": "find_singer-followup",
+        "parameters": {
+          "singer": "五 月 天",
+          "singer.original": "五月天"
+        }
+        
+      }
+    ]
+	};
+	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			context=response.result.contexts[0];
-			
-			if(response.result.metadata.intentName='find_singer'){
-			console.log('find_singer!' + sessionid);
-				bot.on('message', function(event) {
-					console.log('bot2 start !');
-					if (event.message.type = 'text') {
-						var msg1 = event.message.text;
-	
-						var options = {
-							sessionId: uuid(),
-							contexts:[
-								{
-								"name": "find_singer-followup",
-								"parameters": {
-									"singer": "五 月 天",
-									"singer.original": "五月天"
-								}
-        
-								}
-							]
-						};
-						console.log('id'+options.sessionId);
-						console.log('name'+options.contexts[0].name);
-						console.log('para'+options.contexts[0].parameters.singer);
-						var request1 = app1.textRequest(msg1,options);
-						
-					}
-					request1.on('response',function(response){
-						event.reply(response.result.fulfillment.speech).then(function(data) {
-							console.log(response);
-						});
-					});
-				});//bot
-			}
+
 			}).catch(function(error) {
       // error 
 			console.log('error');
