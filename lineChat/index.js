@@ -23,22 +23,21 @@ bot.on('message', function(event) {
       {
         "name": "find_singer-followup",
         "parameters": {
-          "singer": "五 月 天",
-          "singer.original": "五月天"
+          "singer": "",
+          "singer.original": ""
         }
         
       }
     ]
 	};
+	console.log('singer :' + options.contexts[0].parameters.singer);
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			bot.on('message',function(event){
-			console.log("bot2!!"+event.message.text);
-			});
+			
 			}).catch(function(error) {
       // error 
 			console.log('error');
