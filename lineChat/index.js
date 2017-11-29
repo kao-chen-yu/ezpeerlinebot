@@ -38,14 +38,13 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			console.log('response singer :' +response.result.parameters.singer);
-			options.contexts[0].parameters.singer=response.result.parameters.singer;
-			options.contexts[0].parameters.singer.original=response.result.parameters.singer;
+			options.contexts[0].parameters.singer="五月天";
+			options.contexts[0].parameters.singer.original="五月天";
 			}).catch(function(error) {
       // error 
 			console.log('error');
 			});
 	});
-	console.log('response singer after :' +response.result.parameters.singer);
 	request.on('error',function(error){
 		console.log(error);
 	});
