@@ -23,11 +23,15 @@ bot.on('message', function(event) {
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
-      console.log(response);
-    }).catch(function(error) {
+			console.log(response);
+			if(response.result.parameters.singer!="")
+			console.log('singer not null')
+			else if (response.result.contexts[0].parameters.singer!="")
+			console.log('context !! ' )
+			}).catch(function(error) {
       // error 
-      console.log('error');
-    });
+			console.log('error');
+			});
 	});
 	
 	request.on('error',function(error){
