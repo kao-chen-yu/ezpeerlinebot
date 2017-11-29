@@ -35,7 +35,8 @@ bot.on('message', function(event) {
 						var request = app1.textRequest( msg1,{
 							sessionId: uuid(),
 							contexts: context
-						});	
+						});
+						console.log('request' + request);
 					}
 					request.on('response',function(response){
 						event.reply(response.result.fulfillment.speech).then(function(data) {
