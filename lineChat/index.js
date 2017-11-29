@@ -26,8 +26,23 @@ bot.on('message', function(event) {
 			console.log(response);
 			context=response.result.contexts[0];
 			console.log('contexts :' + context.parameters.singer);
-			if(response.result.metadata.intentName='find_singer')
-				console.log('find_singer!');
+			if(response.result.metadata.intentName='find_singer'){
+			console.log('find_singer!');
+				bot.on('message', function(event) {
+					if (event.message.type = 'text') {
+						var msg1 = event.message.text;
+						var request = app1.textRequest( msg1,{
+							sessionId: uuid(),
+							contexts: context
+						});	
+					}
+					request.on('response',function(response){
+						event.reply(response.result.fulfillment.speech).then(function(data) {
+							console.log(response);
+						});
+					});
+				});//bot
+			}
 			}).catch(function(error) {
       // error 
 			console.log('error');
