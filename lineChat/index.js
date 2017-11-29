@@ -23,8 +23,8 @@ bot.on('message', function(event) {
       {
         "name": "find_singer-followup",
         "parameters": {
-          "singer": "",
-          "singer.original": ""
+          "singer": "五月天",
+          "singer.original": "五月天"
         }
         
       }
