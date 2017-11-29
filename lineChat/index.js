@@ -36,7 +36,7 @@ bot.on('message', function(event) {
 	request.on('response',function(response){
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
-			console.log('bot 1 response 'response);
+			console.log('bot 1 response '+response);
 			console.log('response singer :' +response.result.parameters.singer);
 			var options2 = {
 			sessionId: uuid(),
