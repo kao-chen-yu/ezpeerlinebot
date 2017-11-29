@@ -45,7 +45,7 @@ bot.on('message', function(event) {
 			console.log('error');
 			});
 	});
-	
+	console.log('response singer after :' +response.result.parameters.singer);
 	request.on('error',function(error){
 		console.log(error);
 	});
