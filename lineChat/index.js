@@ -57,7 +57,8 @@ var test = function(response){
 	console.log('test function');
 	bot.on('message', function(event) {
 		console.log('bot2 start !');
-		
+		console.log('options test :' + response.result.parameters.singer.original);
+	console.log('test function');
 		var options = {
 		sessionId: uuid(),
 		contexts:[
