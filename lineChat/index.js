@@ -43,7 +43,12 @@ bot.on('message', function(event) {
 			console.log('options :' + options.contexts[0].parameters.singer);
 			bot.on('message', function(event){
 				console.log('bot 2 start !' + event.message.text);
-				
+				console.log('bot 2 options'+options.contexts[0].parameters.singer);
+				request = app1.textRequest(msg,options);
+				request.on('response',function(response){
+				console.log('bot 2 response');
+				console.log(response);
+				});
 			});
 			}).catch(function(error) {
       // error 
