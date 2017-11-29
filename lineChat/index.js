@@ -36,13 +36,16 @@ bot.on('message', function(event) {
 	
 						var options = {
 							sessionId: uuid(),
-							contexts: [{
-									name: context.name,
-									parameters: {
-										'singer': context.parameters.singer,
-										'singer.original' : context.parameters.singer.original
-											}
-								}]
+							contexts:[
+								{
+								"name": "find_singer-followup",
+								"parameters": {
+									"singer": "五 月 天",
+									"singer.original": "五月天"
+								}
+        
+								}
+							]
 						};
 						console.log('id'+options.sessionId);
 						console.log('name'+options.contexts[0].name);
