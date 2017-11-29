@@ -57,7 +57,7 @@ var test = function(response){
 	console.log('test function');
 	bot.on('message', function(event) {
 		console.log('bot2 start !');
-		console.log('options test :' + response.result.parameters.singer.original);
+		console.log('options test :' + response.result.parameters.singer);
 	console.log('test function');
 		var options = {
 		sessionId: uuid(),
@@ -66,7 +66,7 @@ var test = function(response){
         "name": "find_singer-followup",
         "parameters": {
           "singer": response.result.parameters.singer,
-          "singer.original": response.result.parameters.singer.original
+          "singer.original": response.result.parameters.singer
         }
         
       }
