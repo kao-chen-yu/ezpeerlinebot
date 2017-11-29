@@ -32,7 +32,7 @@ bot.on('message', function(event) {
 				bot.on('message', function(event) {
 					if (event.message.type = 'text') {
 						var msg1 = event.message.text;
-						console.log('contexts :' + context.parameters.singer);
+	
 						var options = {
 							sessionId: '321',
 							contexts: [{
