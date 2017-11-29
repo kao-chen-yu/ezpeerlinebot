@@ -37,7 +37,7 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			bot.on('message',function(event){
-			console.log(event.message.text;);
+			console.log(event.message.text);
 			});
 			}).catch(function(error) {
       // error 
