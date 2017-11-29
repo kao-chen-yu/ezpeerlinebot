@@ -64,8 +64,8 @@ var test = function(response){
 		{
         "name": "find_singer-followup",
         "parameters": {
-          "singer": "五 月 天",
-          "singer.original": "五月天"
+          "singer": response.result.parameters.singer,
+          "singer.original": response.result.parameters.singer.original
         }
         
       }
