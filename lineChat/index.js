@@ -38,13 +38,24 @@ bot.on('message', function(event) {
       // success 
 			console.log(response);
 			console.log('response singer :' +response.result.parameters.singer);
-			options.contexts[0].parameters.singer="五月天";
-			options.contexts[0].parameters.singer.original="五月天";
-			console.log('options :' + options.contexts[0].parameters.singer);
+			var options2 = {
+			sessionId: uuid(),
+			contexts:[
+				{
+					"name": "find_singer-followup",
+					"parameters": {
+					"singer": "五月天",
+					"singer.original": "五月天"
+					}
+        
+				}
+					]
+				};
+			console.log('options :' + options2.contexts[0].parameters.singer);
 			bot.on('message', function(event){
 				console.log('bot 2 start !' + event.message.text);
-				console.log('bot 2 options'+options.contexts[0].parameters.singer);
-				request = app1.textRequest(msg,options);
+				console.log('bot 2 options'+options2.contexts[0].parameters.singer);
+				request = app1.textRequest(event.message.text,options2);
 				request.on('response',function(response){
 				console.log('bot 2 response');
 				console.log(response);
