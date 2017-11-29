@@ -16,8 +16,9 @@ bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
     var msg = event.message.text;
+	var sessionid= uuid();
 	var request = app1.textRequest( msg,{
-			sessionId: uuid()
+			sessionId: sessionid
 	});
 	var context='';
 	request.on('response',function(response){
@@ -27,7 +28,7 @@ bot.on('message', function(event) {
 			context=response.result.contexts[0];
 			
 			if(response.result.metadata.intentName='find_singer'){
-			console.log('find_singer!');
+			console.log('find_singer!' + sessionid);
 				bot.on('message', function(event) {
 					if (event.message.type = 'text') {
 						var msg1 = event.message.text;
@@ -46,7 +47,7 @@ bot.on('message', function(event) {
 						console.log('name'+options.contexts[0].name);
 						console.log('para'+options.contexts[0].parameters.singer);
 						var request = app1.textRequest( msg1,{
-							sessionId: uuid(),
+							sessionId: sessionid,
 							contexts: [
 								{
 									name: context.name,
