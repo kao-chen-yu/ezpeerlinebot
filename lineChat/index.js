@@ -69,6 +69,34 @@ bot.on('message', function(event) {
 var test = function(response){
 	console.log('options test :' + response.result.parameters.singer);
 	console.log('test function');
+	bot.on('message', function(event) {
+		console.log('bot2 start !');
+		
+		var options = {
+		sessionId: uuid(),
+		contexts:[
+		{
+        "name": "find_singer-followup",
+        "parameters": {
+          "singer": "五 月 天",
+          "singer.original": "五月天"
+        }
+        
+      }
+    ]
+	};
+	var request = app1.textRequest(event.message.text,options);
+	
+	request.on('response',function(response){
+		console.log(response);
+	});
+	
+	request.on('error',function(error){
+		console.log(error);
+	});
+	request.end();
+		
+	});
 }
 const app = express();
 const linebotParser = bot.parser();
