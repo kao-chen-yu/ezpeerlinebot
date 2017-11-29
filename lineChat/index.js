@@ -34,13 +34,13 @@ bot.on('message', function(event) {
 						console.log('contexts :' + context.parameters.singer);
 						var options = {
 							sessionId: '321',
-							contexts: {
+							contexts: [{
 									name: context.name,
 									parameters: {
 										'singer': context.parameters.singer,
 										'singer.original' : context.parameters.singer.original
 											}
-								}
+								}]
 						};
 						console.log('id'+options.sessionId);
 						console.log('name'+options.contexts[0].name);
