@@ -67,7 +67,7 @@ bot.on('message', function(event) {
   }
 });
 var test = function(response){
-	console.log('options test :');
+	console.log('options test :' response.result.parameters.singer);
 	console.log('test function');
 }
 const app = express();
