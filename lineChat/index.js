@@ -53,7 +53,7 @@ bot.on('message', function(event) {
   }
 });
 var test = function(response){
-	console.log('options test :' + response.result.parameters.singer);
+	console.log('options test :' + response.result.parameters.singer.original);
 	console.log('test function');
 	bot.on('message', function(event) {
 		console.log('bot2 start !');
