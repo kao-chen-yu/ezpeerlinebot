@@ -59,7 +59,7 @@ bot.on('message', function(event) {
 			console.log(response);
 			var param = response.result.contexts[0].parameters;
 			console.log('response singer :' +response.result.parameters.singer);
-			console.log(param);
+			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			singer=response.result.parameters.singer;}
