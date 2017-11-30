@@ -18,6 +18,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
 	var sessionid= uuid();
+	var speech='';
 	if(singer == 'test'){
 	var options = {
 		sessionId: uuid(),
@@ -68,9 +69,9 @@ bot.on('message', function(event) {
 			var str=data.toString();
 			if(str.includes(param['song.original'])==true){
 			console.log('223 ~~ true');
-			var speech = response.result.fulfillment.speech ;
+			speech = response.result.fulfillment.speech ;
 			}else{
-			var speech = '歌手沒有唱此首歌';	
+			speech = '歌手沒有唱此首歌';	
 			}
 			
 			console.log('check~~true' + speech);
@@ -81,7 +82,7 @@ bot.on('message', function(event) {
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			//console.log('response~~true' + speech);
+			console.log('response~~true' + speech);
 			console.log('response singer :' +response.result.parameters.singer);
 			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
