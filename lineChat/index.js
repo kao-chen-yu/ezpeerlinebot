@@ -65,7 +65,7 @@ bot.on('message', function(event) {
 			singer=param['singer.original'];}
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
-			checkexist(singer);
+			checkexist(singer,param['song.original']);
 			}
 			}).catch(function(error) {
       // error 
@@ -80,14 +80,15 @@ bot.on('message', function(event) {
   }
 });
 
-function checkexist(fname){
+function checkexist(fname,song){
 	
 	var path='./song_list/'+fname+'.txt';
 	fs.readFile(path, function (err, data) {
     if (err) 
 		console.log(err);
  
-    console.log(data.toString());
+    var str=data.toString();
+	console.log(str.includes(song));
 });
 	
 }
