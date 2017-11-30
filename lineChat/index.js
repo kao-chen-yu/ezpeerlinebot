@@ -57,7 +57,7 @@ bot.on('message', function(event) {
 	request.on('response',function(response){
 			var param = response.result.contexts[0].parameters;
 			if(response.result.metadata.intentName=='find_singer - custom'){
-			console.log('find_singer - custom');
+			console.log('find_singer - custom' +singer);
 			
 			
 			var path='./song_list/'+singer+'.txt';
