@@ -81,8 +81,7 @@ bot.on('message', function(event) {
 function checkexist(fname){
 	
 	var str_arr=fname.spilt(' ');
-	for(int i=0;i<str_arr.length;i++)
-		console.log(arr_str[i]);
+		console.log('check'+arr_str[0]+arr_str[1]+arr_str[2]);
 	var path='./song_list/'+fname+'.txt';
 	fs.readFile(path, function (err, data) {
     if (err) 
