@@ -85,7 +85,7 @@ function checkexist(fname){
     if (err) 
 		console.log(err);
  
-    console.log(data.toString());
+    console.log(data);
 });
 	
 }
