@@ -74,9 +74,9 @@ bot.on('message', function(event) {
 				console.log(err);
  
 			var str=data.toString();
-			console.log(str.includes(param['song.original']));
+			console.log('323'+str.includes(param['song.original']));
 			check = str.includes(param['song.original']);
-			console.log('123'+check);
+			console.log('223'+check);
 			});
 			
 			console.log('check~~true');
