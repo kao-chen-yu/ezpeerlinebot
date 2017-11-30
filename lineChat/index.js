@@ -57,6 +57,7 @@ bot.on('message', function(event) {
 	var context='';
 	request.on('response',function(response){
 			var param = response.result.contexts[0].parameters;
+			speech = response.result.fulfillment.speech ;
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom' +singer);
 			
@@ -69,7 +70,6 @@ bot.on('message', function(event) {
 			var str=data.toString();
 			if(str.includes(param['song.original'])==true){
 			console.log('223 ~~ true');
-			speech = response.result.fulfillment.speech ;
 			}else{
 			speech = '歌手沒有唱此首歌';	
 			}
@@ -79,7 +79,7 @@ bot.on('message', function(event) {
 			
 			
 			}
-		    event.reply(response.result.fulfillment.speech).then(function(data) {
+		    event.reply(speech).then(function(data) {
       // success 
 			console.log(response);
 			console.log('response~~true' + speech);
