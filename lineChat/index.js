@@ -68,12 +68,13 @@ bot.on('message', function(event) {
 			var str=data.toString();
 			if(str.includes(param['song.original'])==true){
 			console.log('223 ~~ true');
+			var speech = response.result.fulfillment.speech ;
 			}else{
-			response.result.fulfillment.speech = '歌手沒有唱此首歌';	
+			var speech = '歌手沒有唱此首歌';	
 			}
 			});
 			
-			console.log('check~~true' + response.result.fulfillment.speech);
+			console.log('check~~true' + speech);
 			}
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
