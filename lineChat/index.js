@@ -62,7 +62,7 @@ bot.on('message', function(event) {
 			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
-			singer=response.result.parameters.singer;}
+			singer=param['singer.original'];}
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
 			checkexist(singer);
