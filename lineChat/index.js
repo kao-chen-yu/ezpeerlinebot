@@ -57,7 +57,7 @@ bot.on('message', function(event) {
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			var param = response.result.parameters;
+			var param = response.result.contexts[0].parameters;
 			console.log('response singer :' +response.result.parameters.singer);
 			console.log(param);
 			if(response.result.metadata.intentName=='find_singer'){
