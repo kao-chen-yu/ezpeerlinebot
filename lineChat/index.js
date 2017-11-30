@@ -76,6 +76,7 @@ bot.on('message', function(event) {
 			var str=data.toString();
 			if(str.includes(param['song.original'])==true);
 			console.log('223 ~~ true');
+			response.result.fulfillment.speech = '223 323 423';
 			});
 			
 			console.log('check~~true');
