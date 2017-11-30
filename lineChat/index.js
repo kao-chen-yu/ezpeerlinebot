@@ -42,7 +42,7 @@ bot.on('message', function(event) {
 			console.log('response singer :' +response.result.parameters.singer);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
-			singer=response.result.parameters.singer.original;}
+			singer=response.result.parameters.singer;}
 			}).catch(function(error) {
       // error 
 			console.log('error');
