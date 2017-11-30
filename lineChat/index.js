@@ -11,7 +11,7 @@ var bot = linebot({
 	channelSecret : '9e852ad5d789e81c1af1a51f6666d7c5',
 	channelAccessToken : 'i9WIA5CANkd5E9XjHYgRfq3DbPS1klBRTvBQRGKahHjZUrvunsYfibJRgnXisONeMXfZRqdYAg20GgQUDf6WB6l+XRTFUrSkpZ94cf3dcG7br0qX6vXihJ7gNFK0yt/aEGWfetUB9mTDTqv0Zrp/SwdB04t89/1O/w1cDnyilFU='
 });
-
+var singer='test';
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
@@ -32,6 +32,7 @@ bot.on('message', function(event) {
 	};
 	
 	console.log('singer :' + options.contexts[0].parameters.singer);
+	console.log('singers' + singer);
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
@@ -41,7 +42,7 @@ bot.on('message', function(event) {
 			console.log('response singer :' +response.result.parameters.singer);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
-			test(response,request);}
+			singer=response.result.parameters.singer.original;}
 			}).catch(function(error) {
       // error 
 			console.log('error');
