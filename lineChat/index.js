@@ -50,9 +50,7 @@ bot.on('message', function(event) {
 	request.on('error',function(error){
 		console.log(error);
 	});
-	request.end('end',function(end){
-		console.log('end');
-	});
+	request.end();
   }
 });
 var test = function(response){
