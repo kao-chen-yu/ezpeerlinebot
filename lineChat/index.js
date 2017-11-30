@@ -83,7 +83,7 @@ function checkexist(fname){
 	var path='./songlist/'+fname+'.txt';
 	fs.readFile(path, function (err, data) {
     if (err) 
-		ocnsole.log(err);
+		console.log(err);
  
     console.log(data.toString());
 });
