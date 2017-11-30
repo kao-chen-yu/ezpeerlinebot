@@ -57,7 +57,7 @@ bot.on('message', function(event) {
 	var context='';
 	request.on('response',function(response){
 			var param = response.result.contexts[0].parameters;
-			speech = response.result.fulfillment.speech ;
+			speech = 'test' ;
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom' +singer);
 			
