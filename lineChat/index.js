@@ -41,8 +41,7 @@ bot.on('message', function(event) {
 			console.log('response singer :' +response.result.parameters.singer);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
-			request.end();
-			var t=test(response);}
+			var t=test(response,request);}
 			}).catch(function(error) {
       // error 
 			console.log('error');
@@ -54,7 +53,7 @@ bot.on('message', function(event) {
 	request.end();
   }
 });
-var test = function(response){
+var test = function(response,request1){
 	console.log('options test :' + response.result.parameters.singer.original);
 	console.log('test function');
 	bot.on('message', function(event) {
@@ -91,7 +90,7 @@ var test = function(response){
 		console.log(error);
 	});
 	request.end();
-		
+	request1.end();
 	});
 }
 const app = express();
