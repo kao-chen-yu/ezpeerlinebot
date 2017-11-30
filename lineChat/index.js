@@ -51,36 +51,31 @@ bot.on('message', function(event) {
 		
 		
 	}
-	console.log('singer :' + options.contexts[0].parameters.singer);
 	console.log('singers' + singer);
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
 			var param = response.result.contexts[0].parameters;
 			speech = response.result.fulfillment.speech ;
-			if(response.result.metadata.intentName=='find_singer - custom'){
+			if(response.result.metadata.intentName=='find_singer - custom' || response.result.metadata.intentName =='listen_song'){
+			if(response.result.metadata.intentName =='listen_song')
+				singer=response.result.parameters['singer.original'];
 			console.log('find_singer - custom' +singer);
 			
 			
-			var path='./song_list/'+singer+'.txt';
-			fs.readFile(path, function (err, data) {
-			if (err) 
-				console.log(err);
+				var path='./song_list/'+singer+'.txt';
+				fs.readFile(path, function (err, data) {
+				if (err) 
+					console.log(err);
  
-			var str=data.toString();
-			if(str.includes(param['song.original'])==true){
-			console.log('223 ~~ true');
-			}else{
-			speech = '歌手沒有唱此首歌';	
-			}
-			
-			console.log('check~~true' + speech);
+				var str=data.toString();
+				if(str.includes(param['song.original'])==true){
+				}else{
+					speech = '歌手沒有唱此首歌';	
+				}
 			event.reply(speech).then(function(data) {
       // success 
 			console.log(response);
-			console.log('response~~true' + speech);
-			console.log('response singer :' +response.result.parameters.singer);
-			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			singer=param['singer.original'];}
@@ -98,9 +93,6 @@ bot.on('message', function(event) {
 		    event.reply(speech).then(function(data) {
       // success 
 			console.log(response);
-			console.log('response~~true' + speech);
-			console.log('response singer :' +response.result.parameters.singer);
-			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			singer=param['singer.original'];}
