@@ -55,16 +55,7 @@ bot.on('message', function(event) {
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
-		    event.reply(response.result.fulfillment.speech).then(function(data) {
-      // success 
-			console.log(response);
-			var param = response.result.contexts[0].parameters;
-			console.log('response singer :' +response.result.parameters.singer);
-			console.log(param['singer.original']);
-			if(response.result.metadata.intentName=='find_singer'){
-			console.log('find_singer!');
-			singer=param['singer.original'];}
-			if(response.result.metadata.intentName=='find_singer - custom'){
+		if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
 			
 			
@@ -74,10 +65,20 @@ bot.on('message', function(event) {
 				console.log(err);
  
 			var str=data.toString();
-			if(str.includes(param['song.original'])==true);
+			if(str.includes(param['song.original'])==true)
 			console.log('223 ~~ true');
 			response.result.fulfillment.speech = '223 323 423';
 			});
+		    event.reply(response.result.fulfillment.speech).then(function(data) {
+      // success 
+			console.log(response);
+			var param = response.result.contexts[0].parameters;
+			console.log('response singer :' +response.result.parameters.singer);
+			console.log(param['singer.original']);
+			if(response.result.metadata.intentName=='find_singer'){
+			console.log('find_singer!');
+			singer=param['singer.original'];}
+			
 			
 			console.log('check~~true');
 			}
