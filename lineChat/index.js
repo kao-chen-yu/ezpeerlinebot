@@ -17,6 +17,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
 	var sessionid= uuid();
+	if(singer == 'test'){
 	var options = {
 		sessionId: uuid(),
 		contexts:[
@@ -30,7 +31,24 @@ bot.on('message', function(event) {
       }
     ]
 	};
-	
+	}
+	else{
+	var options = {
+		sessionId: uuid(),
+		contexts:[
+      {
+        "name": "find_singer-followup",
+        "parameters": {
+          "singer": singer,
+          "singer.original": singer
+        }
+        
+      }
+    ]
+	};	
+		
+		
+	}
 	console.log('singer :' + options.contexts[0].parameters.singer);
 	console.log('singers' + singer);
 	var request = app1.textRequest(msg,options);
@@ -55,45 +73,7 @@ bot.on('message', function(event) {
 	console.log('bot1 end');
   }
 });
-function test(response,request1){
-	console.log('options test :' + response.result.parameters.singer.original);
-	console.log('test function');
-	bot.on('message', function(event) {
-		console.log('bot2 start !');
-		console.log('options test :' + response.result.parameters.singer);
-		console.log('msg :' + event.message.text);
-	console.log('test function');
-		var options = {
-		sessionId: uuid(),
-		contexts:[
-		{
-        "name": "find_singer-followup",
-        "parameters": {
-          "singer": response.result.parameters.singer,
-          "singer.original": response.result.parameters.singer
-        }
-        
-      }
-    ]
-	};
-	var request = app1.textRequest(event.message.text,options);
-	
-	request.on('response',function(response){
-		event.reply(response.result.fulfillment.speech).then(function(data) {
-      // success 
-			console.log(response);
-			}).catch(function(error) {
-      // error 
-			console.log('error');
-			});
-	});
-	
-	request.on('error',function(error){
-		console.log(error);
-	});
-	request.end();
-	});
-}
+
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
