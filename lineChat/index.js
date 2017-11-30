@@ -12,6 +12,7 @@ var bot = linebot({
 	channelAccessToken : 'i9WIA5CANkd5E9XjHYgRfq3DbPS1klBRTvBQRGKahHjZUrvunsYfibJRgnXisONeMXfZRqdYAg20GgQUDf6WB6l+XRTFUrSkpZ94cf3dcG7br0qX6vXihJ7gNFK0yt/aEGWfetUB9mTDTqv0Zrp/SwdB04t89/1O/w1cDnyilFU='
 });
 var singer='test';
+var check = false;
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
@@ -65,8 +66,8 @@ bot.on('message', function(event) {
 			singer=param['singer.original'];}
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
-			var check = checkexist(singer,param['song.original']);
-			console.log('123'+checkexist(singer,param['song.original']));
+			checkexist(singer,param['song.original']);
+			console.log('123'+check);
 			console.log('check~~true');
 			}
 			}).catch(function(error) {
@@ -91,7 +92,7 @@ var checkexist = function (fname,song){
  
     var str=data.toString();
 	console.log(str.includes(song));
-	return str.includes(song);
+	check = str.includes(song);
 });
 	
 }
