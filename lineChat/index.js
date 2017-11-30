@@ -57,7 +57,7 @@ bot.on('message', function(event) {
 	var context='';
 	request.on('response',function(response){
 			var param = response.result.contexts[0].parameters;
-			speech = 'test' ;
+			speech = response.result.fulfillment.speech ;
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom' +singer);
 			
@@ -75,10 +75,26 @@ bot.on('message', function(event) {
 			}
 			
 			console.log('check~~true' + speech);
+			event.reply(speech).then(function(data) {
+      // success 
+			console.log(response);
+			console.log('response~~true' + speech);
+			console.log('response singer :' +response.result.parameters.singer);
+			console.log(param['singer.original']);
+			if(response.result.metadata.intentName=='find_singer'){
+			console.log('find_singer!');
+			singer=param['singer.original'];}
+
+			}).catch(function(error) {
+      // error 
+			console.log('error');
+			});
+			
 			});
 			
 			
 			}
+			else{
 		    event.reply(speech).then(function(data) {
       // success 
 			console.log(response);
@@ -93,6 +109,7 @@ bot.on('message', function(event) {
       // error 
 			console.log('error');
 			});
+			}
 	});
 	request.on('error',function(error){
 		console.log(error);
