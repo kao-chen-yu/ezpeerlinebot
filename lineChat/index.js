@@ -41,6 +41,7 @@ bot.on('message', function(event) {
 			console.log('response singer :' +response.result.parameters.singer);
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
+			request.end();
 			var t=test(response);}
 			}).catch(function(error) {
       // error 
