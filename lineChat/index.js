@@ -59,7 +59,7 @@ bot.on('message', function(event) {
 			speech = response.result.fulfillment.speech ;
 			if(response.result.metadata.intentName=='find_singer - custom' || response.result.metadata.intentName =='listen_song'){
 			if(response.result.metadata.intentName =='listen_song')
-				singer=response.result.parameters['singer.original'];
+				singer=param['singer.original'];
 			console.log('find_singer - custom' +singer);
 			
 			
