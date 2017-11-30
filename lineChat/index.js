@@ -51,6 +51,7 @@ bot.on('message', function(event) {
 		console.log(error);
 	});
 	request.end();
+	console.log('bot1 end');
   }
 });
 var test = function(response,request1){
