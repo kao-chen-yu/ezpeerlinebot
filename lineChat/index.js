@@ -55,7 +55,7 @@ bot.on('message', function(event) {
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
-		if(response.result.metadata.intentName=='find_singer - custom'){
+			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
 			
 			
@@ -69,6 +69,9 @@ bot.on('message', function(event) {
 			console.log('223 ~~ true');
 			response.result.fulfillment.speech = '223 323 423';
 			});
+			
+			console.log('check~~true');
+			}
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
@@ -78,10 +81,7 @@ bot.on('message', function(event) {
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			singer=param['singer.original'];}
-			
-			
-			console.log('check~~true');
-			}
+
 			}).catch(function(error) {
       // error 
 			console.log('error');
