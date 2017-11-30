@@ -67,16 +67,16 @@ bot.on('message', function(event) {
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
 			
-			var path='./song_list/'+fname+'.txt';
+			
+			var path='./song_list/'+singer+'.txt';
 			fs.readFile(path, function (err, data) {
 			if (err) 
 				console.log(err);
  
 			var str=data.toString();
-			console.log(str.includes(song));
-			check = str.includes(song);
+			console.log(str.includes(param['song.original']));
+			check = str.includes(param['song.original']);
 			});
-			
 			console.log('123'+check);
 			console.log('check~~true');
 			}
