@@ -5,7 +5,7 @@ var express = require('express');
 const uuid = require('uuid/v1');
 var apiai = require('apiai');
 var app1 = apiai('df450cef4ea7467a8543a9c0ee587e2e');
-
+var fs=require('fs');
 var bot = linebot({
 	channelId : '1547763729',
 	channelSecret : '9e852ad5d789e81c1af1a51f6666d7c5',
@@ -61,6 +61,10 @@ bot.on('message', function(event) {
 			if(response.result.metadata.intentName=='find_singer'){
 			console.log('find_singer!');
 			singer=response.result.parameters.singer;}
+			if(response.result.metadata.intentName=='find_singer - custom'){
+			console.log('find_singer - custom');
+			checkexist(singer);
+			}
 			}).catch(function(error) {
       // error 
 			console.log('error');
@@ -74,6 +78,17 @@ bot.on('message', function(event) {
   }
 });
 
+function checkexist(fname){
+	
+	var path='./songlist/'+fname+'.txt';
+	fs.readFile(path, function (err, data) {
+    if (err) 
+		ocnsole.log(err);
+ 
+    console.log(data.toString());
+});
+	
+}
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
