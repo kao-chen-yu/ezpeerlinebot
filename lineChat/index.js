@@ -55,6 +55,7 @@ bot.on('message', function(event) {
 	var request = app1.textRequest(msg,options);
 	var context='';
 	request.on('response',function(response){
+			var param = response.result.contexts[0].parameters;
 			if(response.result.metadata.intentName=='find_singer - custom'){
 			console.log('find_singer - custom');
 			
@@ -75,7 +76,7 @@ bot.on('message', function(event) {
 		    event.reply(response.result.fulfillment.speech).then(function(data) {
       // success 
 			console.log(response);
-			var param = response.result.contexts[0].parameters;
+			
 			console.log('response singer :' +response.result.parameters.singer);
 			console.log(param['singer.original']);
 			if(response.result.metadata.intentName=='find_singer'){
