@@ -90,7 +90,6 @@ var test = function(response,request1){
 		console.log(error);
 	});
 	request.end();
-	request1.end();
 	});
 }
 const app = express();
